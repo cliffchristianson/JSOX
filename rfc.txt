@@ -130,7 +130,7 @@ Table of Contents
    Programming Language Standard, Version 7 [ECMA-262].
 
    JSOX can represent seven primitive types (strings, numbers, booleans,
-   null, Dates, and BigInt, TypedArrays) and two structured types
+   null, Dates, BigInt, and TypedArrays) and two structured types
    (objects and arrays).
 
    A string is a sequence of zero or more Unicode characters [UNICODE].
@@ -156,7 +156,7 @@ Table of Contents
       [google search 'class definition' 1]
 
 
-   JSOX's design goals were to extend and enhance JSON adding more
+   JSOX's design goals were to extend and enhance JSON by adding more
    features for human clarity, while keeping JSON's original goals
    for it to be minimal, portable, textual, and a subset of JavaScript.
    Additionally, encoding for basic types like TypedArrays, which are
@@ -252,7 +252,7 @@ Table of Contents
 
       false null true Infinity NaN undefined
 
-   The literal names MUST exactly match tbe case.  No other literal names are
+   The literal names MUST exactly match the case.  No other literal names are
    allowed.
 
       value = false / null / true / object / array / number / string
@@ -326,7 +326,7 @@ Table of Contents
 
    ECMA Script defined (in version 6?) typed arrays, which are packed,
    binary types of data.  These can be encoded in JSOX using the same
-   sort of definition as a Typed Object, but, instead there are several
+   sort of definition as a Typed Object, except there are several
    hard coded array types.   The element of a typed array buffer is
    a base64 encoded identifier.  The base64 data should be decoded to 
    the raw bytes before parser output.
@@ -348,8 +348,8 @@ Table of Contents
 	uses 
 		ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$_
 	accepts '=' as a nul terminator.
-   The following characters are accepted at the final encoding, but most
-	will require quoting.  With the above defined sequence quotes may be
+   The following characters are accepted at the final encoding, but most 
+   will require quoting.  With the above defined sequence quotes may be
    omitted on binary typed array information.
 
 		'$':62
@@ -369,7 +369,7 @@ Table of Contents
    to the Number() constructor in ES6.  JSOX breaks that by also 
    allowing 'T','Z',':','+', and '-' to switch to a ES6 Date type,
    and numbers suffixed with an 'n' which uses BigInt constructor
-   to result with the number's value.
+   to result with the numbers' value.
 
    The representation of numbers is similar to that used in most
    programming languages.  A number is represented in base 10 using
@@ -377,9 +377,9 @@ Table of Contents
    prefixed with an optional minus sign, which may be followed by a
    fraction part and/or an exponent part.  
 
-   In JSON, Leading zeros are not allowed.  Leading zeros are allowed,
-   although will often change the value's interpretation.  Radix numbers
-   like 0x123 have a leading zero, followed by a format character ( one of
+   In JSON, Leading zeros are not allowed.  Leading zeros are allowed in JSOX,
+   although will often change the interpretation of the value.  Radix numbers
+   like 0x123 have a leading zero, followed by a format character (one of
    'x','o',or 'b' in any case, which inidicate hexidecimal, octal, and binary
    respectively).  A leading zero on an integer changes the meaning to
    be octal, and while parsing, any character not in 0-7 emits an error.
@@ -389,7 +389,7 @@ Table of Contents
    then 127.  
 
    Underscore('_') may be used in a number. It is treated as a Non-Breaking-Zero-
-   Width-space (NBZWSP).  That is the character is not stored, it and 
+   Width-space (NBZWSP).  That is the character is not stored and it
    does not modify the number.  Many languages support this now; although
    most have very strict rules about allowed placement.  A leading 
    underscore puts this value in the realm of Identifiers.
@@ -437,7 +437,7 @@ Table of Contents
    Dates decoded which are not ISO 8601 compatible may result in 'Invalid Date';
    especially given the vagueness of date value specification.
 
-   With the addition fo BigInt types in (?), the native ECMA Script is
+   With the addition fo BigInt types in ES2020 (ES11), the native ECMA Script is
    an integer number suffixed with 'n'.
 
    This specification allows implementations to set limits on the range
@@ -484,7 +484,7 @@ Table of Contents
    F can be upper or lower case.  So, for example, a string containing
    only a single reverse solidus character may be represented as
    "\u005C".
-       Escaping character that are 1 byte may be done with \x or \[0-2]
+       Escaping a character that is 1 byte may be done with \x or \[0-2]
        for hex or octal conversion.
 
        or \u{HEXDIGITS}
@@ -648,7 +648,7 @@ Table of Contents
    is a subset of JavaScript that excludes expressions.
 
    Since JSOX's syntax deviates from Javascript for class defintions, 
-   it is, in many cases, longer possible to  use that language's 
+   it is, in many cases, no longer possible to use that language's 
    "eval()" function to parse JSOX texts; although there is a subset 
    of documents, those which do not use typed objects or typed arrays, 
    which can still be resolved using "eval()".
